@@ -1,0 +1,42 @@
+@import "../../../css-config/mixin.scss";
+
+.trustedBy {
+  background-color: #fafafa;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding-top: 3.5rem;
+
+  .container {
+    max-width: 300px;
+    width: 100%;
+    height: 50px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(200, 200, 200);
+    font-weight: 500;
+    @include md {
+      gap: 20px;
+      max-width: 760px;
+      flex-direction: row;
+    }
+
+    .img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      img {
+        height: 50px;
+        object-fit: scale-down;
+        width: 50px;
+        @include md {
+          width: 100px;
+        }
+      }
+    }
+  }
+}

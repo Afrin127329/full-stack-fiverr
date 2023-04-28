@@ -1,0 +1,74 @@
+@import "../../../css-config/mixin.scss";
+
+.add {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    width: 80%;
+    padding: 50px 0px;
+
+    h1 {
+      width: max-content;
+      margin-bottom: 30px;
+      color: gray;
+      font-weight: 300;
+    }
+
+    .sections {
+      display: flex;
+      justify-content: space-between;
+      gap: 100px;
+      flex-direction: column;
+      @include md {
+        flex-direction: row;
+      }
+
+      label {
+        color: gray;
+        font-size: 14px;
+        @include md {
+          font-size: 18px;
+        }
+      }
+
+      .info,
+      .details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: space-between;
+
+        input,
+        select,
+        textarea {
+          padding: 10px 20px;
+          outline: none;
+          resize: none;
+          @include md {
+            padding: 20px;
+          }
+        }
+
+        button {
+          border: 1px solid black;
+          padding: 10px 20px;
+          color: black;
+          font-weight: 500;
+          font-size: 18px;
+          background-color: transparent;
+          cursor: pointer;
+          @include md {
+            padding: 20px;
+          }
+          &:hover {
+            background-color: #013914;
+            color: white;
+            transition: all 0.4s ease;
+          }
+        }
+      }
+    }
+  }
+}

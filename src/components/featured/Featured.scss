@@ -1,0 +1,142 @@
+@import "../../../css-config/mixin.scss";
+
+.featured {
+  display: flex;
+  justify-content: center;
+  background-color: #013914;
+  color: white;
+  @include lg {
+    height: 100vh;
+  }
+
+  .container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    @include lg {
+      flex-direction: row;
+      gap: 30px;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex: 2;
+      @include md {
+        align-items: flex-start;
+      }
+      h1 {
+        font-size: 30px;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.3rem auto;
+        @include md {
+          font-size: 50px;
+          margin-top: 0;
+          text-align: start;
+        }
+
+        span {
+          font-style: italic;
+          font-weight: 300;
+        }
+      }
+
+      .search {
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 1rem;
+        @include lg {
+          width: 40vw;
+          margin-bottom: 0;
+        }
+
+        .searchInput {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img {
+            width: 20px;
+            height: 20px;
+            margin: 10px;
+          }
+
+          input {
+            border: none;
+            outline: none;
+
+            &::placeholder {
+              color: gray;
+            }
+          }
+        }
+
+        button {
+          width: 100%;
+          height: 50px;
+          border: none;
+          padding: 5px 10px;
+          background-color: #000000;
+          color: white;
+          align-self: flex-end;
+          cursor: pointer;
+          @include sm {
+            padding: 10px 20px;
+            width: 120px;
+            height: 50px;
+          }
+        }
+      }
+
+      .popular {
+        gap: 5px;
+        margin-bottom: 1rem;
+        display: none;
+        @include lg {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 0;
+          align-items: center;
+          justify-content: center;
+        }
+
+        span {
+          width: max-content;
+        }
+
+        button {
+          width: max-content;
+          color: white;
+          border: 1px solid white;
+          padding: 5px 5px;
+          border-radius: 20px;
+          background-color: transparent;
+          font-size: 12px;
+          @include md {
+            padding: 5px 10px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .right {
+      height: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

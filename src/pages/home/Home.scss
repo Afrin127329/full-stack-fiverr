@@ -1,0 +1,208 @@
+@import "../../../css-config/mixin.scss";
+
+.home {
+  .features {
+    background-color: #f1fdf7;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0px;
+
+    &.dark {
+      background-color: #0d084d;
+
+      h1 {
+        color: white !important;
+      }
+
+      i {
+        font-weight: 300;
+      }
+
+      p {
+        margin-bottom: 20px;
+        color: white !important;
+      }
+
+      .title {
+        color: white !important;
+        font-weight: 300 !important;
+        font-size: 14px !important;
+      }
+
+      button {
+        background-color: #1dbf73;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        width: max-content;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+    }
+
+    .container {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      @include lg {
+        flex-direction: row;
+        gap: 50px;
+      }
+      @include lg {
+        gap: 150px;
+      }
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        &:first-child {
+          flex: 2;
+        }
+        &:last-child {
+          flex: 3;
+          align-items: center;
+        }
+
+        img {
+          width: 100%;
+        }
+        h1 {
+          font-weight: 500;
+          font-size: 20px;
+          margin-bottom: 10px;
+          @include sm {
+            font-size: 28px;
+          }
+        }
+        .title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 500;
+          font-size: 14px;
+          color: #666;
+          @include sm {
+            font-size: 17px;
+          }
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+        p {
+          font-size: 13px;
+          font-weight: 300;
+          color: gray;
+          line-height: 22px;
+          letter-spacing: 1px;
+          @include md {
+            font-size: 15px;
+            font-weight: 300;
+            color: gray;
+            line-height: 28px;
+          }
+        }
+
+        video {
+          width: 100%;
+          @include md {
+            width: 450px;
+          }
+        }
+      }
+    }
+
+    //   &.reverse {
+    //     background-color: #0d084d;
+    //     color: white;
+    //     .container {
+    //       flex-direction: row-reverse;
+    //     }
+    //   }
+  }
+
+  .explore {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0px;
+    flex-wrap: wrap;
+
+    .container {
+      // width: 1400px;
+
+      h1 {
+        color: #555;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 20px;
+        @include sm {
+          text-align: start;
+          font-size: 24px;
+        }
+      }
+
+      .items {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        @include sm {
+          flex-direction: row;
+        }
+
+        .item {
+          width: 100px;
+          height: 50px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          cursor: pointer;
+          @include md {
+            width: 200px;
+            height: 150px;
+          }
+
+          img {
+            width: 25px;
+            height: 25px;
+            @include md {
+              width: 50px;
+              height: 50px;
+            }
+          }
+
+          .line {
+            width: 50px;
+            height: 2px;
+            background-color: lightgray;
+            transition: all 0.3s ease;
+          }
+
+          span {
+            font-weight: 300;
+            font-size: 11px;
+            @include md {
+              font-size: 16px;
+            }
+          }
+
+          &:hover {
+            .line {
+              width: 80px;
+              background-color: #1dbf73;
+            }
+          }
+        }
+      }
+    }
+  }
+}

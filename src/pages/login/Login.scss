@@ -1,0 +1,64 @@
+@import "../../../css-config/mixin.scss";
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    width: 250px;
+    padding: 100px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @include sm {
+      width: 360px;
+    }
+
+    h1 {
+      color: gray;
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: gray;
+      font-size: 13px;
+      @include sm {
+        font-size: 18px;
+      }
+    }
+
+    input,
+    textarea {
+      padding: 10px 20px;
+      outline: none;
+      border: 1px solid rgb(216, 214, 214);
+      @include sm {
+        padding: 20px;
+      }
+    }
+
+    button {
+      border: 1px solid black;
+      padding: 10px 20px;
+      color: black;
+      font-weight: 500;
+      font-size: 18px;
+      background-color: transparent;
+      cursor: pointer;
+      @include sm {
+        padding: 20px;
+      }
+      &:hover {
+        background-color: #013914;
+        color: white;
+        transition: all 0.4s ease;
+      }
+    }
+
+    span {
+      color: red;
+      font-size: 12px;
+    }
+  }
+}

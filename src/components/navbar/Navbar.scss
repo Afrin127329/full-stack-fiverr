@@ -1,0 +1,329 @@
+@import "../../../css-config/mixin.scss";
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #013914;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: 0.5s all ease;
+
+  &.active {
+    background-color: white;
+    color: black;
+
+    button {
+      color: black !important;
+      border: 1px solid #013914 !important;
+      &:hover {
+        background-color: #013914 !important;
+        border-color: #013914 !important;
+        color: white !important;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  .container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+
+    .logo {
+      font-size: 34px;
+      font-weight: bold;
+
+      .dot {
+        font-weight: bold;
+        color: #1dbf73;
+      }
+
+      .link {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      display: none;
+      @include lg {
+        display: flex;
+      }
+
+      span {
+        white-space: nowrap;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        position: relative;
+
+        img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .link {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .options {
+          position: absolute;
+          top: 3rem;
+          right: 0.5rem;
+          padding: 1.5rem;
+          background-color: lightgray;
+          border-radius: 10px;
+          z-index: 999;
+          border: 1px solid lightgrey;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          width: 10rem;
+          font-weight: 300;
+          color: black;
+        }
+      }
+
+      button {
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid white;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #000000;
+          border-color: #ffffff;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+
+    .display {
+      display: none;
+    }
+
+    .RiMenuAddFill {
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding-left: 1rem;
+    }
+
+    // small screen
+    .FiMenu {
+      display: block;
+      position: absolute;
+      top: 1.5rem;
+      right: 0.5rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.5s all ease;
+      @include lg {
+        display: none;
+      }
+    }
+    .smallScreen {
+      display: block;
+      transition: 0.5s all ease;
+      @include lg {
+        display: none;
+      }
+
+      .MdClose {
+        position: absolute;
+        top: 1.5rem;
+        right: 0.5rem;
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .smallScreenLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3rem;
+    right: 0.5rem;
+    width: 10rem;
+    height: 15rem;
+    background-color: lightgray;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    transform: translateX(100%);
+    animation: slideMenu 0.4s forwards;
+    padding: 10px 0;
+    @include lg {
+      display: none;
+    }
+    .link {
+      padding: 10px;
+    }
+
+    .smallScreenUser {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.5rem;
+      img {
+        width: 32px;
+        height: 32px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .smallScreenOptions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 13rem;
+        right: 0rem;
+        width: 10rem;
+        background-color: lightgray;
+        border-radius: 5px;
+        color: black;
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        .link {
+          padding: 0.3rem;
+          margin: 0.3rem;
+        }
+      }
+    }
+
+    span {
+      padding: 0.3rem;
+      margin: 0.3rem;
+    }
+
+    button {
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: 1px solid black;
+
+      &:hover {
+        background-color: #013914 !important;
+        color: white !important;
+        cursor: pointer !important;
+        border: 1px solid white !important;
+        transition: all 0.4s ease !important;
+      }
+    }
+  }
+
+  hr {
+    width: calc(100% - 2px);
+    height: 0;
+    border-top: 0.5px solid #ebe9e9;
+    border-bottom: 0.5px solid #ebe9e9;
+  }
+
+  .menu {
+    width: 40%;
+    padding: 1.3rem 1rem;
+    margin: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 4rem;
+    top: 5rem;
+    justify-content: space-between;
+    color: black;
+    background-color: lightgray;
+    border-radius: 10px;
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+    transform: translateX(100%);
+    animation: slideMenu2 0.3s forwards;
+    @include sm {
+      width: 25%;
+    }
+
+    .menuLink {
+      padding: 0.5rem;
+    }
+    .link {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+@keyframes slideMenu {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideMenu2 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// @media screen and (min-width: 860px) {
+//   .navbar {
+//     .container {
+//       .FiMenu {
+//         display: none;
+//       }
+//       .display {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+// @media screen and (max-width: 860px) {
+//   .navbar {
+//     .container {
+//       .links {
+//         display: none;
+//       }
+//       .FiMenu,
+//       .smallScreen {
+//         display: block;
+//       }
+
+//       .display {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 900px) {
+//   .menu {
+//     gap: 0.3rem;
+//     .link {
+//       font-size: 0.7rem;
+//     }
+//   }
+// }

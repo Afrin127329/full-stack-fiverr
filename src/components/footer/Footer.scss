@@ -1,0 +1,116 @@
+@import "../../../css-config/mixin.scss";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  color: #666;
+
+  img {
+    width: 13px;
+    height: 13px;
+    @include md {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .container {
+    width: 80%;
+    .top {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 13px;
+      gap: 1rem;
+      @include sm {
+        justify-content: space-between;
+        margin: 0 5rem;
+        font-size: 18px;
+      }
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        cursor: pointer;
+        h2 {
+          font-size: 16px;
+          color: #555;
+        }
+        span {
+          font-weight: 300;
+        }
+      }
+    }
+
+    hr {
+      margin: 25px 0px;
+      height: 0;
+      border: 1px solid #ebe9e9;
+      @include md {
+        margin: 50px 0px;
+      }
+    }
+    .bottom {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 2rem;
+      @include md {
+        flex-direction: row;
+      }
+
+      .left {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        span {
+          font-size: 13px;
+          white-space: nowrap;
+        }
+      }
+      .right {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        @include md {
+          gap: 30px;
+          font-size: 16px;
+        }
+
+        .social {
+          display: flex;
+          gap: 10px;
+          cursor: pointer;
+          @include md {
+            gap: 20px;
+          }
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 900px) {
+//   .footer {
+//     .container {
+//       .top {
+//         margin: 0;
+//       }
+//       .bottom {
+//         flex-direction: column;
+//         gap: 2rem;
+//       }
+//     }
+//   }
+// }
