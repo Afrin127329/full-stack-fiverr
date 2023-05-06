@@ -1,0 +1,53 @@
+@import "../../../css-config/mixin.scss";
+.reviews {
+  margin-top: 50px;
+
+  .add {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .addForm {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      input {
+        padding: 20px;
+      }
+
+      select {
+        width: 200px;
+        padding: 20px;
+        align-self: flex-end;
+      }
+      button {
+        align-self: flex-end;
+        width: 100px;
+        padding: 10px !important;
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 5px;
+        color: black !important;
+        font-weight: 500;
+        font-size: 14px;
+        background-color: transparent !important;
+        @include sm {
+          padding: 20px;
+        }
+        &:hover {
+          background-color: #013914 !important;
+          color: white !important;
+          transition: all 0.4s ease;
+        }
+      }
+    }
+  }
+
+  hr {
+    height: 0;
+    border: 0.5px solid lightgray;
+    margin: 50px 0px;
+  }
+}

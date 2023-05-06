@@ -3,10 +3,10 @@ import axios from "axios";
 const upload = async (file)=> {
   const data = new FormData();
   data.append("file", file);
-  data.append("upload_preset", "fiverr_images");
+  data.append("upload_preset", "fiverr_fullStack");
 
   try {
-    const res = await axios.post("https://api.cloudinary.com/v1_1/dbmrtvnem/image/upload", data);
+    const res = await axios.post(import.meta.env.VITE_UPLOAD_API, data);
 
     const {url} = res.data;
 

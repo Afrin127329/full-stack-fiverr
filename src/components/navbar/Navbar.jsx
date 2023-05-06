@@ -164,7 +164,7 @@ const Navbar = () => {
                       <Link className="link" to="/messages">
                         Messages
                       </Link>
-                      <Link className="link" to="/">
+                      <Link className="link" to="/" onClick={logout}>
                         Logout
                       </Link>
                     </div>
@@ -188,31 +188,31 @@ const Navbar = () => {
       {openMenu && (
         <>
           <div className="menu" ref={closeMenu} onClick={handleClose}>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=graphicsdesign">
               Graphics Design
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=video">
               Video & Anim.
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=writing">
               Writing & Trans.
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=ai">
               AI Services
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=marketing">
               Dig. Marketing
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=music">
               Music & Audio
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=programming">
               Prog. & Tech
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=business">
               Business
             </Link>
-            <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/gigs?cat=lifestyle">
               Lifestyle
             </Link>
           </div>

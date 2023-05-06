@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Loading from "../../components/loading/Loading.jsx";
 import newRequest from '../../utils/newRequest.js';
 import upload from '../../utils/upload.js';
 import "./Register.scss";
 
 function Register() {
+  const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [user, setUser] = useState({
     username: "",
@@ -32,13 +34,14 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const url = await upload(file);
     try {
       await newRequest.post("/auth/register", {
         ...user,
         img: url
       });
-      navigate('/');
+      navigate('/login');
     } catch (error) {
       console.log(error)
     }
@@ -102,6 +105,7 @@ function Register() {
             onChange={handeChange}
           ></textarea>
           <button type="submit">Register</button>
+          {loading && <Loading type="bubbles" color="#013914" />}
         </div>
       </form>
     </div>

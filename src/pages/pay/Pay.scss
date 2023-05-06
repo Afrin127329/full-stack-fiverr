@@ -1,0 +1,25 @@
+.pay {
+  display: flex;
+  margin: 20px 0px;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+  #payment-form {
+    gap: 20px;
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+  }
+  button {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: none;
+    cursor: pointer;
+    &:hover {
+      background-color: #013914;
+      color: white;
+      transition: 0.4s all ease;
+    }
+  }
+}

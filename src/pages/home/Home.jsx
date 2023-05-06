@@ -4,7 +4,6 @@ import { cards, projects } from "../../data";
 import "./Home.scss";
 
 function Home() {
-
   return (
     <div className="home">
       <Featured />

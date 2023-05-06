@@ -1,16 +1,29 @@
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import React from 'react';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.scss';
 import { Footer, Navbar } from './components';
 import { Add, Gig, Gigs, Home, Login, Message, Messages, MyGigs, Orders, Register } from './pages';
+import Pay from "./pages/pay/Pay";
+import Success from "./pages/success/Success";
+import AppContext from "./utils/context";
+
 
 const App = () => {
+  const queryClient = new QueryClient();
 
   const Layout = ()=>{
     return <div>
+      <AppContext>
+      <QueryClientProvider client={queryClient}>
       <Navbar/>
       <Outlet/>
       <Footer/>
+      </QueryClientProvider>
+      </AppContext>
     </div>
   }
 
@@ -58,6 +71,14 @@ const App = () => {
         {
           path: '/login',
           element: <Login/>
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
         },
       ],
     },

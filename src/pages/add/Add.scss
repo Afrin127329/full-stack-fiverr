@@ -40,6 +40,23 @@
         gap: 10px;
         justify-content: space-between;
 
+        .images {
+          .imagesInputs {
+            display: flex;
+            flex-direction: column;
+            .upload {
+              display: flex;
+              align-items: center;
+            }
+          }
+          button {
+            font-size: 13px !important;
+            @include md {
+              padding: 10px 20px;
+            }
+          }
+        }
+
         input,
         select,
         textarea {
@@ -48,6 +65,20 @@
           resize: none;
           @include md {
             padding: 20px;
+          }
+        }
+
+        .addedFeatures {
+          display: flex;
+          gap: 19px;
+          flex-flow: wrap;
+          margin-bottom: 1rem;
+          .item {
+            height: 20px;
+            button {
+              font-size: 14px;
+              padding: 5px 10px;
+            }
           }
         }
 

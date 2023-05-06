@@ -1,102 +1,91 @@
-import React, { useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import GigCard from "../../components/gigCard/GigCard";
-import { gigs } from "../../data";
+import Loading from "../../components/loading/Loading";
+import newRequest from "../../utils/newRequest";
 import "./Gigs.scss";
 
-const Gigs = () => {
-	const [open, setOpen] = useState(false);
-	const [sort, setSort] = useState("sales");
-	const minRef = useRef();
-	const maxRef = useRef();
+function Gigs() {
+  const [sort, setSort] = useState("sales");
+  const [open, setOpen] = useState(false);
+  const minRef = useRef();
+  const maxRef = useRef();
 
-	const resort = (type) => {
-		setSort(type);
-		setOpen(false);
-	};
+  const { search } = useLocation();
 
-	const apply = () => {
-		console.log(minRef.current.value);
-		console.log(maxRef.current.value);
-	};
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["gigs"],
+    queryFn: () =>
+      newRequest
+        .get(
+          `/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+        )
+        .then((res) => {
+          return res.data;
+        })
+        .catch((err) => console.log(err)),
+  });
 
-	return (
-		<div className="gigs">
-			<div className="container">
-				<span className="breadcrumbs">
-					Liverr &gt; Graphics & Design &gt;
-				</span>
-				<div className="breadcrumbs"></div>
-				<h1>AI Artists</h1>
-				<p>
-					Explore the boundaries of art and technology with Liverr's AI
-					artists
-				</p>
+  const reSort = (type) => {
+    setSort(type);
+    setOpen(false);
+  };
 
-				<div className="menu">
-					<div className="left">
-						<span>Budget</span>
-						<input type="number" ref={minRef} placeholder="min" />
-						<input type="number" ref={maxRef} placeholder="max" />
-						<button onClick={apply}>Apply</button>
-					</div>
-					<div className="right">
-						<span className="sortBy">Sort by: </span>
-						<span className="sortType">
-                {sort === "sales" && "Best Selling"}
-                {sort === "createdAt" && "Newest"}
-                {sort === "popular" && "Popular"}
-						</span>
+  useEffect(() => {
+    refetch();
+  }, [sort]);
 
-						<img
-							src="./img/down.png"
-							alt="down"
-							onClick={() => setOpen(!open)}
-						/>
-						{open && (
-							<div className="rightMenu">
-								{sort === "sales" && (
-									<>
-										<span onClick={() => resort("createdAt")}>
-											Newest
-										</span>
-										<span onClick={() => resort("popular")}>
-											Popular
-										</span>
-									</>
-								)}
-								{sort === "createdAt" && (
-									<>
-										<span onClick={() => resort("sales")}>
-											Best Selling
-										</span>
-										<span onClick={() => resort("popular")}>
-											Popular
-										</span>
-									</>
-								)}
-								{sort === "popular" && (
-									<>
-										<span onClick={() => resort("sales")}>
-											Best Selling
-										</span>
-										<span onClick={() => resort("createdAt")}>
-											Newest
-										</span>
-									</>
-								)}
-							</div>
-						)}
-					</div>
-				</div>
+  const apply = () => {
+    refetch();
+  };
 
-				<div className="cards">
-					{gigs.map((gig) => (
-						<GigCard key={gig.id} item={gig} />
-					))}
-				</div>
-			</div>
-		</div>
-	);
-};
+
+  return (
+    <div className="gigs">
+      <div className="container">
+        <span className="breadcrumbs">Liverr &gt; Graphics & Design &gt;</span>
+        <h1>Artists</h1>
+        <p>
+          Explore the boundaries of art and technology with Liverr's artists
+        </p>
+        <div className="menu">
+          <div className="left">
+            <span>Budget</span>
+            <input ref={minRef} type="number" placeholder="min" />
+            <input ref={maxRef} type="number" placeholder="max" />
+            <button onClick={apply}>Apply</button>
+          </div>
+          <div className="right">
+            <span className="sortBy">Sort by</span>
+            <span className="sortType">
+              {sort === "sales" ? "Best Selling" : "Newest"}
+            </span>
+            <img src="./img/down.png" alt="" onClick={() => setOpen(!open)} />
+            {open && (
+              <div className="rightMenu">
+                {sort === "sales" ? (
+                  <span onClick={() => reSort("createdAt")}>Newest</span>
+                ) : (
+                  <span onClick={() => reSort("sales")}>Best Selling</span>
+                )}
+                <span onClick={() => reSort("sales")}>Popular</span>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="cards">
+          {isLoading ? (
+            <Loading type="bubbles" color="#013914" />
+          ) : error ? (
+            "Something went wrong!"
+          ) : (
+            data.map((gig) => <GigCard key={gig._id} item={gig} />)
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default Gigs;

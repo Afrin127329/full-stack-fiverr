@@ -1,0 +1,17 @@
+.scontainer {
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: lightgray;
+  justify-content: center;
+  align-items: center;
+  .success {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+  }
+}
